@@ -8,5 +8,10 @@
   :plugins [[lein-ring "0.9.7"]]
   :ring {:handler task-ci.handler/app}
   :profiles
-  {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
+  {:dev {:plugins [[cider/cider-nrepl "0.13.0-SNAPSHOT"]
+                   [refactor-nrepl "2.3.0-SNAPSHOT"]]
+         :ring {:port 8080
+                :nrepl {:start? true
+                        :port 59258}}
+         :dependencies [[javax.servlet/servlet-api "2.5"]
                         [ring/ring-mock "0.3.0"]]}})
